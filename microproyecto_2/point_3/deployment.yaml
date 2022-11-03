@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iris-dl-deployment
+spec:
+  selector:
+    matchLabels:
+      app: iris-dl
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: iris-dl
+    spec:
+     containers:
+     - name: iris-dl
+       image: criollo48/iris-dl:latest
+       imagePullPolicy: Always
+       ports:
+       - containerPort: 8501
